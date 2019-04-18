@@ -3,7 +3,7 @@ package com.example.spell3.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "words")
+@Table(name = "allword")
 public class Word {
 
     @Id
@@ -12,7 +12,7 @@ public class Word {
     private Long id;
 
 
-    @Column(name="allwords")
+    @Column(name="word")
     private String allWords;
 
 

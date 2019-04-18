@@ -11,29 +11,18 @@
 
 
 </head>
-
 <div class="container">
-
   <h3>Spell</h3>
+    <p th:text="'Word ' +  ${word.allWords}"/>
 
-<table class="table table-bordered table-striped">
-    <tbody>
+<h1>Form</h1>
 
-    <tr th:each="tempWord : ${word}">
+    <form action="#" th:action="@{/}" th:object="${theInWord}" method="post">
+        <p> <input type="text" th:field="*{inputWord}"/></p>
 
-<td th:text="${tempWord.allWords}">
+        <p><input type="submit" value="Submit"/> </p>
 
-</td>
-
-
-
-    </tr>
-
-
-
-    </tbody>
-</table>
-
+    </form>
 </div>
 
 
