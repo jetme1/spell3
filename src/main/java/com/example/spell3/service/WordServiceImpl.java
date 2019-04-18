@@ -30,8 +30,6 @@ public class WordServiceImpl implements WordService {
             throw new RuntimeException("Did not find id - " + theId);
 
         }
-
-
         return theWord;
     }
 }
