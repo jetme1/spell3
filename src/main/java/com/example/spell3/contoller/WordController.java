@@ -31,15 +31,22 @@ public class WordController {
     public String getWord(Model theModel) {
 
         Word theWord = wordService.findById(theId);
-        theModel.addAttribute("theInWord", new InWord());
+        //  theModel.addAttribute("theInWord", new InWord());
         theModel.addAttribute("word", theWord);
         System.out.println("in controller" + theWord);
         return "/word/word-index.html";
 
     }
 
+    @GetMapping("/word/wordCheck/typeWordForm")
+    public String inputWord(Model theModel) {
+        theModel.addAttribute("theInWord", new InWord());
 
-    @PostMapping("/")
+        return "/word/wordCheck/typeWordForm";
+    }
+
+
+    @PostMapping("/word/wordCheck/typeWordForm")
     public String InWordInput(@ModelAttribute InWord theInWord, Model theModel) {
 
         Word theWord = wordService.findById(theId);
@@ -49,13 +56,16 @@ public class WordController {
         System.out.println(isTheSame);
         if (isTheSame.compare(theWord, theInWord)) {
             System.out.println("same");
+            return "/word/word-index.html";
+
         } else {
             System.out.println("not the Same");
+            return "/word/wordCheck/typeWordForm";
+
         }
 
 
-        System.out.println(theInWord);
-        return "/word/word-index.html";
+
     }
 
 

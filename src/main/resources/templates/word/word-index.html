@@ -13,16 +13,13 @@
 </head>
 <div class="container">
   <h3>Spell</h3>
-    <p th:text="'Word ' +  ${word.allWords}"/>
+    <p th:text="'Spell the word ' +  ${word.allWords}"/>
 
-<h1>Form</h1>
+    <a th:href="@{/word/wordCheck/typeWordForm}"
+       class = "btn btn-primary btn-sm mb-3">
+        READY
+    </a>
 
-    <form action="#" th:action="@{/}" th:object="${theInWord}" method="post">
-        <p> <input type="text" th:field="*{inputWord}"/></p>
-
-        <p><input type="submit" value="Submit"/> </p>
-
-    </form>
 </div>
 
 
