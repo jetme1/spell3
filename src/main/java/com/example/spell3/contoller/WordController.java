@@ -22,9 +22,9 @@ public class WordController {
 
     private Long theId = Long.valueOf(1);
 
-    public WordController(WordService wordService,CompareWordService isTheSame) {
+    public WordController(WordService wordService, CompareWordService isTheSame) {
         this.wordService = wordService;
-        this.isTheSame =isTheSame;
+        this.isTheSame = isTheSame;
     }
 
     @GetMapping("/")
@@ -45,11 +45,14 @@ public class WordController {
         Word theWord = wordService.findById(theId);
         theModel.addAttribute("theInWord", theInWord);
         theModel.addAttribute("word", theWord);
-  //CompareWordService isTheSame = new CompareWordServiceImpl();
-  System.out.println(isTheSame);
-  if(isTheSame.compare()) {
-      System.out.println("same");
-  }
+        //CompareWordService isTheSame = new CompareWordServiceImpl();
+        System.out.println(isTheSame);
+        if (isTheSame.compare(theWord, theInWord)) {
+            System.out.println("same");
+        } else {
+            System.out.println("not the Same");
+        }
+
 
         System.out.println(theInWord);
         return "/word/word-index.html";

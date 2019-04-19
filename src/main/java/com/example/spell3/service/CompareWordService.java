@@ -8,5 +8,5 @@ public interface CompareWordService {
 
  //   public boolean compare(InWord theInWord, Word theWord) ;
 
-    public boolean compare();
+    public boolean compare(Word theWord, InWord theInWord );
 }
