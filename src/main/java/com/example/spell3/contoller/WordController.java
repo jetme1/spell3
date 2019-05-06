@@ -20,7 +20,9 @@ public class WordController {
     private WordService wordService;
     private CompareWordService isTheSame;
 
-    private Long theId = Long.valueOf(1);
+
+//private Long theIdCount = 0L;
+    private Long theId=0L;
 
     public WordController(WordService wordService, CompareWordService isTheSame) {
         this.wordService = wordService;
@@ -29,6 +31,14 @@ public class WordController {
 
     @GetMapping("/")
     public String getWord(Model theModel) {
+       // theId =theIdCount;
+      //  theIdCount= theId++;
+
+       System.out.println("before id " +theId);
+
+        if (theId==0L){ theId =1L;}
+        System.out.println("afterid " +theId);
+        System.out.println("after id this " +this.theId);
 
         Word theWord = wordService.findById(theId);
         //  theModel.addAttribute("theInWord", new InWord());
@@ -56,6 +66,11 @@ public class WordController {
         System.out.println(isTheSame);
         if (isTheSame.compare(theWord, theInWord)) {
             System.out.println("same");
+            theId=2L;
+            theWord = wordService.findById(theId);
+            theModel.addAttribute("word", theWord);
+            System.out.println("post " + theId);
+            System.out.println("post this  " + this.theId);
             return "/word/word-index.html";
 
         } else {
@@ -65,8 +80,13 @@ public class WordController {
         }
 
 
-
     }
 
+    public Long getTheId() {
+        return theId;
+    }
 
+    public void setTheId(Long theId) {
+        this.theId = theId;
+    }
 }
