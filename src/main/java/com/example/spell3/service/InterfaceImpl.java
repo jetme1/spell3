@@ -4,7 +4,7 @@ public class InterfaceImpl {
 
 
 
-    boolean isSame = true;
+    boolean isSame = false;
 
 
 }

@@ -3,15 +3,16 @@ package com.example.spell3.contoller;
 
 import com.example.spell3.entity.InWord;
 import com.example.spell3.entity.Word;
+import com.example.spell3.exceptions.NotFoundException;
 import com.example.spell3.service.CompareWordService;
 import com.example.spell3.service.CompareWordServiceImpl;
 import com.example.spell3.service.WordService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 
@@ -21,8 +22,8 @@ public class WordController {
     private CompareWordService isTheSame;
 
 
-//private Long theIdCount = 0L;
-    private Long theId=0L;
+    //private Long theIdCount = 0L;
+    private Long theId = 0L;
 
     public WordController(WordService wordService, CompareWordService isTheSame) {
         this.wordService = wordService;
@@ -31,14 +32,16 @@ public class WordController {
 
     @GetMapping("/")
     public String getWord(Model theModel) {
-       // theId =theIdCount;
-      //  theIdCount= theId++;
+        // theId =theIdCount;
+        //  theIdCount= theId++;
 
-       System.out.println("before id " +theId);
+        System.out.println("before id " + theId);
 
-        if (theId==0L){ theId =1L;}
-        System.out.println("afterid " +theId);
-        System.out.println("after id this " +this.theId);
+        if (theId == 0L) {
+            theId = 1L;
+        }
+        System.out.println("afterid " + theId);
+        System.out.println("after id this " + this.theId);
 
         Word theWord = wordService.findById(theId);
         //  theModel.addAttribute("theInWord", new InWord());
@@ -66,7 +69,9 @@ public class WordController {
         System.out.println(isTheSame);
         if (isTheSame.compare(theWord, theInWord)) {
             System.out.println("same");
-            theId=2L;
+
+
+            theId++;
             theWord = wordService.findById(theId);
             theModel.addAttribute("word", theWord);
             System.out.println("post " + theId);
@@ -75,12 +80,20 @@ public class WordController {
 
         } else {
             System.out.println("not the Same");
-            return "/word/wordCheck/typeWordForm";
+            return "word/wordCheck/typeWordFormError.html";
 
         }
 
 
     }
+
+
+
+
+
+
+
+
 
     public Long getTheId() {
         return theId;
