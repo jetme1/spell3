@@ -29,7 +29,7 @@ public class WordController {
 
     //private Long theIdCount = 0L;
     private Long theId = 0L;
-
+    private Long endOfWords =3L;
     public WordController(WordService wordService, CompareWordService isTheSame) {
         this.wordService = wordService;
         this.isTheSame = isTheSame;
@@ -82,12 +82,17 @@ public class WordController {
             if (isTheSame.compare(theWord, theInWord)) {
                 System.out.println("same");
 
-
+                if (theId==endOfWords) {
+                    return "/word/word-right-end.html";
+                }
                 theId++;
                 theWord = wordService.findById(theId);
                 theModel.addAttribute("word", theWord);
                 System.out.println("post " + theId);
                 System.out.println("post this  " + this.theId);
+
+
+
                 return "/word/word-right.html";
 
             } else {
