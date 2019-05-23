@@ -7,12 +7,17 @@ import com.example.spell3.exceptions.NotFoundException;
 import com.example.spell3.service.CompareWordService;
 import com.example.spell3.service.CompareWordServiceImpl;
 import com.example.spell3.service.WordService;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+//import org.springframework.boot.context.properties.bind.BindResult;
+import org.springframework.validation.BindingResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 
@@ -60,28 +65,36 @@ public class WordController {
 
 
     @PostMapping("/word/wordCheck/typeWordForm")
-    public String InWordInput(@ModelAttribute InWord theInWord, Model theModel) {
+    public String InWordInput(@Valid @ModelAttribute("theInWord")  InWord theInWord, BindingResult bindingResult, Model theModel) {
 
         Word theWord = wordService.findById(theId);
         theModel.addAttribute("theInWord", theInWord);
         theModel.addAttribute("word", theWord);
         //CompareWordService isTheSame = new CompareWordServiceImpl();
         System.out.println(isTheSame);
-        if (isTheSame.compare(theWord, theInWord)) {
-            System.out.println("same");
+        if(bindingResult.hasErrors()){
+            System.out.println("in error page");
+            System.out.println(bindingResult);
+            return "/word/wordCheck/typeWordForm";
+
+        }else {
+
+            if (isTheSame.compare(theWord, theInWord)) {
+                System.out.println("same");
 
 
-            theId++;
-            theWord = wordService.findById(theId);
-            theModel.addAttribute("word", theWord);
-            System.out.println("post " + theId);
-            System.out.println("post this  " + this.theId);
-            return "/word/word-index.html";
+                theId++;
+                theWord = wordService.findById(theId);
+                theModel.addAttribute("word", theWord);
+                System.out.println("post " + theId);
+                System.out.println("post this  " + this.theId);
+                return "/word/word-right.html";
 
-        } else {
-            System.out.println("not the Same");
-            return "word/wordCheck/typeWordFormError.html";
+            } else {
+                System.out.println("not the Same");
+                return "word/wordCheck/typeWordFormError.html";
 
+            }
         }
 
 

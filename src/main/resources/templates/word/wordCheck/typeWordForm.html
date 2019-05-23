@@ -15,16 +15,21 @@
 <h1>
     Type word.
 </h1>
-    <form action="#" th:action="@{/word/wordCheck/typeWordForm}" th:object="${theInWord}" method="post">
+<form action="#" th:action="@{/word/wordCheck/typeWordForm}" th:object="${theInWord}" method="post">
+    <table>
+        <tr>
+            <td>Type word:</td>
+            <td><input type="text" th:field="*{inputWord}"/></td>
+            <td th:if="${#fields.hasErrors('inputWord')}" th:error="*{inputWord}">Type Something</td>
+
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
 
 
-        <p> <input type="text" th:field="*{inputWord}"/></p>
-
-        <p><input type="submit" value="Submit"/> </p>
-
-
-
-    </form>
+</form>
 
 </body>
 </html>

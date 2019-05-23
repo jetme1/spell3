@@ -13,7 +13,6 @@ public class CompareWordServiceImpl implements CompareWordService{
 
 
       if (theWord.getAllWords().equalsIgnoreCase(theInWord.getInputWord())) {
-
           return true;
       }
 

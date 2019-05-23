@@ -1,6 +1,8 @@
 package com.example.spell3.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "inword")
@@ -15,6 +17,7 @@ public class InWord {
 
 
     @Column(name = "inputword")
+   @Size(min=1)
     private String inputWord;
 
 
