@@ -30,6 +30,7 @@ public class WordController {
     //private Long theIdCount = 0L;
     private Long theId = 0L;
     private Long endOfWords =3L;
+    private int tryCount=0;
     public WordController(WordService wordService, CompareWordService isTheSame) {
         this.wordService = wordService;
         this.isTheSame = isTheSame;
@@ -83,8 +84,10 @@ public class WordController {
                 System.out.println("same");
 
                 if (theId==endOfWords) {
+                    theId=0L;
                     return "/word/word-right-end.html";
                 }
+                tryCount=0;
                 theId++;
                 theWord = wordService.findById(theId);
                 theModel.addAttribute("word", theWord);
@@ -96,9 +99,25 @@ public class WordController {
                 return "/word/word-right.html";
 
             } else {
-                System.out.println("not the Same");
-                return "word/wordCheck/typeWordFormError.html";
+                if (tryCount<1) {
+                    System.out.println("not the Same");
+                    tryCount++;
+                    return "word/wordCheck/typeWordFormError.html";
+                }else{
+                    System.out.println("in out of tries");
+                    System.out.println(" Try count: " + tryCount+" id " +theId + " end of Words "+endOfWords);
+                    if (tryCount<2 &&theId==endOfWords) {
+                        System.out.println("in last try fail. Try count: " + tryCount+"id" +theId + "end of Words "+endOfWords);
+                        return "/word/word-right-end.html";
 
+                    }
+                    tryCount=0;
+                    if (theId!=endOfWords){
+                    theId++;}
+                    theWord = wordService.findById(theId);
+                    theModel.addAttribute("word", theWord);
+                    return "/word/out-of-tries.html";
+                }
             }
         }
 
