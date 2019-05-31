@@ -3,6 +3,7 @@ package com.example.spell3.contoller;
 
 import com.example.spell3.entity.InWord;
 import com.example.spell3.entity.Word;
+import com.example.spell3.entity.WordTotals;
 import com.example.spell3.exceptions.NotFoundException;
 import com.example.spell3.service.CompareWordService;
 import com.example.spell3.service.CompareWordServiceImpl;
@@ -27,7 +28,8 @@ public class WordController {
     private CompareWordService isTheSame;
 
 
-    //private Long theIdCount = 0L;
+
+    private long numberRight = 0L;
     private Long theId = 0L;
     private Long endOfWords =3L;
     private int tryCount=0;
@@ -82,9 +84,15 @@ public class WordController {
 
             if (isTheSame.compare(theWord, theInWord)) {
                 System.out.println("same");
+                numberRight++;
 
                 if (theId==endOfWords) {
+
+                    WordTotals theWordTotals = new WordTotals(numberRight,endOfWords);
+                    theModel.addAttribute("WordTotals",theWordTotals);
                     theId=0L;
+                    numberRight=0L;
+                  // theModel.addAttribute("numberRight", numberRight );
                     return "/word/word-right-end.html";
                 }
                 tryCount=0;
@@ -106,7 +114,11 @@ public class WordController {
                 }else{
                     System.out.println("in out of tries");
                     System.out.println(" Try count: " + tryCount+" id " +theId + " end of Words "+endOfWords);
-                    if (tryCount<2 &&theId==endOfWords) {
+                    if (theId==endOfWords) {
+                        WordTotals theWordTotals = new WordTotals(numberRight,endOfWords);
+                        theModel.addAttribute("WordTotals",theWordTotals);
+                        theId=0L;
+                        numberRight=0L;
                         System.out.println("in last try fail. Try count: " + tryCount+"id" +theId + "end of Words "+endOfWords);
                         return "/word/word-right-end.html";
 
