@@ -5,8 +5,17 @@ public class WordTotals {
     private Long numberRight;
     private Long totalWords;
 
+
+
     public WordTotals(Long numberRight, Long totalWords) {
         this.numberRight = numberRight;
+        this.totalWords = totalWords;
+    }
+    public Long getTotalWords() {
+        return totalWords;
+    }
+
+    public void setTotalWords(Long totalWords) {
         this.totalWords = totalWords;
     }
 

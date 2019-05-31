@@ -89,6 +89,7 @@ public class WordController {
                 if (theId==endOfWords) {
 
                     WordTotals theWordTotals = new WordTotals(numberRight,endOfWords);
+                   // System.out.println("endOfWords"+ theWordTotals.g);
                     theModel.addAttribute("WordTotals",theWordTotals);
                     theId=0L;
                     numberRight=0L;
