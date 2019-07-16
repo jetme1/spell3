@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Spell</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<h3>Spell</h3>
+
+<div>
+    <form th:object="${wordRouter}" th:action="@{/all/}" method="post">
+<!--    <from action="#" th:action="@{/all}" th:object="${wordRouter}" method="post">-->
+
+        <div>
+            <div>
+                <label for="wordLength">Word Length</label>
+                <select th:field="*{wordLength}">
+                    <option th:each="wordLength : ${lengths}"
+                            th:value="${wordLength}"
+                            th:text="${wordLength}"
+                    >wordsLength
+                    </option>
+                </select>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <!--    <button type="submit" class="btn btn-primary">Go</button>-->
+        </div>
+
+    </form>
+
+
+</div>
+
+<!--
+<div class=
+             " th:value="${wordLength}"">
+    <label>Pick word length</label>
+    <select class="form-control" th:field="*{WordLength}">
+        <option th:each="wordLengthValue : ${T(com.example.spell3.entity.WordLength).values()}"
+                th:value="${WordLengthValue.name()}"
+                th:text="${WordLengthValue.name()}"
+        ></option>
+    </select>
+    <select class="form-control" th:remove="all">
+        <option>Four</option>
+        <option>Five</option>
+        <option>Six</option>
+        <option>seven</option>
+        <option>Eight</option>
+
+    </select>
+
+
+</div>
+-->
+
+
+</body>
+</html>
