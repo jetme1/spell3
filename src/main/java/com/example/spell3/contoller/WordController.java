@@ -1,9 +1,7 @@
 package com.example.spell3.contoller;
 
 
-import com.example.spell3.entity.InWord;
-import com.example.spell3.entity.Word;
-import com.example.spell3.entity.WordTotals;
+import com.example.spell3.entity.*;
 import com.example.spell3.exceptions.NotFoundException;
 import com.example.spell3.service.CompareWordService;
 import com.example.spell3.service.CompareWordServiceImpl;
@@ -19,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 
@@ -28,22 +28,37 @@ public class WordController {
     private CompareWordService isTheSame;
 
 
-
     private long numberRight = 0L;
     private Long theId = 0L;
-    private Long endOfWords =3L;
-    private int tryCount=0;
+    private Long endOfWords = 3L;
+    private int tryCount = 0;
+
     public WordController(WordService wordService, CompareWordService isTheSame) {
         this.wordService = wordService;
         this.isTheSame = isTheSame;
     }
 
+    @ModelAttribute("lengths")//
+    public List<WordLength> lengthOfWords() {
+        return Arrays.asList(WordLength.ALL);
+    }
+
     @GetMapping("/")
-    public String getWord(Model theModel) {
-        // theId =theIdCount;
-        //  theIdCount= theId++;
+    public String home(Model theModel,@ModelAttribute("wordRouter") WordRouter wordRouter) {
+        System.out.println("enum controller / " + wordRouter);
+        //  theModel.addAttribute("WordLength", new WordLength )
+        return "/root/root.html";
+
+    }
+
+
+    @PostMapping("/all")
+    public String getWord(Model theModel,@ModelAttribute("wordRouter") WordRouter wordRouter) {
+
+        System.out.println("enum controller /all " + wordRouter);
 
         System.out.println("before id " + theId);
+       // theModel.addAttribute("wordRouter", wordRouter);
 
         if (theId == 0L) {
             theId = 1L;
@@ -51,11 +66,11 @@ public class WordController {
         System.out.println("afterid " + theId);
         System.out.println("after id this " + this.theId);
 
-        Word theWord = wordService.findById(theId);
+        Word theWord = wordService.findById(theId, wordRouter);
         //  theModel.addAttribute("theInWord", new InWord());
         theModel.addAttribute("word", theWord);
         System.out.println("in controller" + theWord);
-        return "/word/word-index.html";
+        return "/word/word-all.html";
 
     }
 
@@ -68,35 +83,35 @@ public class WordController {
 
 
     @PostMapping("/word/wordCheck/typeWordForm")
-    public String InWordInput(@Valid @ModelAttribute("theInWord")  InWord theInWord, BindingResult bindingResult, Model theModel) {
+    public String InWordInput(@Valid @ModelAttribute("theInWord") InWord theInWord, BindingResult bindingResult, Model theModel) {
 
         Word theWord = wordService.findById(theId);
         theModel.addAttribute("theInWord", theInWord);
         theModel.addAttribute("word", theWord);
         //CompareWordService isTheSame = new CompareWordServiceImpl();
         System.out.println(isTheSame);
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             System.out.println("in error page");
             System.out.println(bindingResult);
             return "/word/wordCheck/typeWordForm";
 
-        }else {
+        } else {
 
             if (isTheSame.compare(theWord, theInWord)) {
                 System.out.println("same");
                 numberRight++;
 
-                if (theId==endOfWords) {
+                if (theId == endOfWords) {
 
-                    WordTotals theWordTotals = new WordTotals(numberRight,endOfWords);
-                   // System.out.println("endOfWords"+ theWordTotals.g);
-                    theModel.addAttribute("WordTotals",theWordTotals);
-                    theId=0L;
-                    numberRight=0L;
-                  // theModel.addAttribute("numberRight", numberRight );
+                    WordTotals theWordTotals = new WordTotals(numberRight, endOfWords);
+                    // System.out.println("endOfWords"+ theWordTotals.g);
+                    theModel.addAttribute("WordTotals", theWordTotals);
+                    theId = 0L;
+                    numberRight = 0L;
+                    // theModel.addAttribute("numberRight", numberRight );
                     return "/word/word-right-end.html";
                 }
-                tryCount=0;
+                tryCount = 0;
                 theId++;
                 theWord = wordService.findById(theId);
                 theModel.addAttribute("word", theWord);
@@ -104,29 +119,29 @@ public class WordController {
                 System.out.println("post this  " + this.theId);
 
 
-
                 return "/word/word-right.html";
 
             } else {
-                if (tryCount<1) {
+                if (tryCount < 1) {
                     System.out.println("not the Same");
                     tryCount++;
                     return "word/wordCheck/typeWordFormError.html";
-                }else{
+                } else {
                     System.out.println("in out of tries");
-                    System.out.println(" Try count: " + tryCount+" id " +theId + " end of Words "+endOfWords);
-                    if (theId==endOfWords) {
-                        WordTotals theWordTotals = new WordTotals(numberRight,endOfWords);
-                        theModel.addAttribute("WordTotals",theWordTotals);
-                        theId=0L;
-                        numberRight=0L;
-                        System.out.println("in last try fail. Try count: " + tryCount+"id" +theId + "end of Words "+endOfWords);
+                    System.out.println(" Try count: " + tryCount + " id " + theId + " end of Words " + endOfWords);
+                    if (theId == endOfWords) {
+                        WordTotals theWordTotals = new WordTotals(numberRight, endOfWords);
+                        theModel.addAttribute("WordTotals", theWordTotals);
+                        theId = 0L;
+                        numberRight = 0L;
+                        System.out.println("in last try fail. Try count: " + tryCount + "id" + theId + "end of Words " + endOfWords);
                         return "/word/word-right-end.html";
 
                     }
-                    tryCount=0;
-                    if (theId!=endOfWords){
-                    theId++;}
+                    tryCount = 0;
+                    if (theId != endOfWords) {
+                        theId++;
+                    }
                     theWord = wordService.findById(theId);
                     theModel.addAttribute("word", theWord);
                     return "/word/out-of-tries.html";
@@ -136,13 +151,6 @@ public class WordController {
 
 
     }
-
-
-
-
-
-
-
 
 
     public Long getTheId() {

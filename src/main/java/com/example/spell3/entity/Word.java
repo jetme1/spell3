@@ -12,7 +12,7 @@ public class Word {
     private Long id;
 
 
-    @Column(name="word")
+    @Column(name="allwords")
     private String allWords;
 
 

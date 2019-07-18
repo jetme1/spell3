@@ -11,28 +11,14 @@
 
 
 </head>
-
 <div class="container">
-
   <h3>Spell</h3>
+    <p th:text="'Spell the word ' +  ${word.allWords}"/>
 
-<table class="table table-bordered table-striped">
-    <tbody>
-
-    <tr th:each="tempWord : ${word}">
-
-<td th:text="${tempWord.allWords}">
-
-</td>
-
-
-
-    </tr>
-
-
-
-    </tbody>
-</table>
+    <a th:href="@{/word/wordCheck/typeWordForm}"
+       class = "btn btn-primary btn-sm mb-3">
+        READY
+    </a>
 
 </div>
 
