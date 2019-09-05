@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-   <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1shrink-to-fit=no">
 
 
@@ -12,26 +12,30 @@
 
 </head>
 <div class="container">
-  <h3>Spell</h3>
-    <p th:text="'Spell the word ' +  ${word.allWords}"/>
+    <h3>Spell</h3>
+
+
+    <div th:switch="${wordRouter.wordLength.name}">
+        <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/>
+        <p th:case="'SIX'"th:text="'Spell the word ' +  ${word.sixLength}"/>
+        <p th:case="'SEVEN'"th:text="'Spell the word ' +  ${word.sevenLength}"/>
+        <p th:case="'EIGHT'"th:text="'Spell the word ' +  ${word.eightLength}"/>
+        <p th:case="'NINE'"th:text="'Spell the word ' +  ${word.nineLength}"/>
+        <p th:case="'TEN'"th:text="'Spell the word ' +  ${word.tenLength}"/>
+        <p th:case="'ELEVEN'"th:text="'Spell the word ' +  ${word.elevenLength}"/>
+        <p th:case="'TWELVE'"th:text="'Spell the word ' +  ${word.tweleveLength}"/>
+        <p th:case="'THIRTEEN'"th:text="'Spell the word ' +  ${word.thirteenLength}"/>
+        <p th:case="'FOURTEEN'"th:text="'Spell the word ' +  ${word.fourteenLength}"/>
+        <p th:case="*">Email web site admin their is a enum problem</p>
+        <!--  <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/> -->
+    </div>
 
     <a th:href="@{/word/wordCheck/typeWordForm}"
-       class = "btn btn-primary btn-sm mb-3">
+       class="btn btn-primary btn-sm mb-3">
         READY
     </a>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </html>

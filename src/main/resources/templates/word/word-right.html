@@ -13,7 +13,24 @@
 </head>
 <div class="container">
   <h3>Spell</h3>
-    <p th:text="'Good job, now try ' +  ${word.allWords}"/>
+    <p th:text="'Good job'"/>
+
+    <div th:switch="${wordRouter.wordLength.name}">
+        <p th:case="'FIVE'" th:text="'now try ' +  ${word.fiveLength}"/>
+        <p th:case="'SIX'"th:text="'now try ' +  ${word.sixLength}"/>
+        <p th:case="'SEVEN'"th:text="'now try ' +  ${word.sevenLength}"/>
+        <p th:case="'EIGHT'"th:text="'now try ' +  ${word.eightLength}"/>
+        <p th:case="'NINE'"th:text="'now try ' +  ${word.nineLength}"/>
+        <p th:case="'TEN'"th:text="'now try ' +  ${word.tenLength}"/>
+        <p th:case="'ELEVEN'"th:text="'now try ' +  ${word.elevenLength}"/>
+        <p th:case="'TWELVE'"th:text="'now try ' +  ${word.tweleveLength}"/>
+        <p th:case="'THIRTEEN'"th:text="'now try ' +  ${word.thirteenLength}"/>
+        <p th:case="'FOURTEEN'"th:text="'now try ' +  ${word.fourteenLength}"/>
+        <p th:case="*">Email web site admin their is a enum problem</p>
+        <!--  <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/> -->
+    </div>
+
+
 
     <a th:href="@{/word/wordCheck/typeWordForm}"
        class = "btn btn-primary btn-sm mb-3">

@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Service
 public class WordServiceImpl implements WordService {
-
     WordRouter wordRouter;
     private WordRepository wordRepository;
 
@@ -23,11 +22,13 @@ public class WordServiceImpl implements WordService {
 
     @Override
     public Word findById(Long theId, WordRouter wordRouter) {
+        System.out.println("in WordService findById long "+wordRouter);
         Optional<Word> result = wordRepository.findById(theId);
 //WordRouter emuInfo = new WordRouter();
        this.wordRouter=wordRouter;
          //  System.out.println("in WordService " + emuInfo.getWordLength());
-     System.out.println("in WordService findById "+wordRouter);
+
+
         Word theWord = null;
 
         if (result.isPresent()) {
@@ -37,6 +38,7 @@ public class WordServiceImpl implements WordService {
             throw new NotFoundException("ID Not Found. For ID value:  " + theId.toString()+ " email website owner" );
 
         }
+        System.out.println("in Word long findbyId " +theWord);
         return theWord;
     }
 
@@ -55,6 +57,7 @@ public class WordServiceImpl implements WordService {
             throw new NotFoundException("ID Not Found. For ID value:  " + theId.toString()+ " email website owner" );
 
         }
+        System.out.println("in WordService findById short theWord "+theWord);
         return theWord;
     }
 
