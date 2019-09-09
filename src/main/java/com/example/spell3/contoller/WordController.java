@@ -89,6 +89,7 @@ public class WordController {
     public String InWordInput(@Valid @ModelAttribute("theInWord") InWord theInWord, BindingResult bindingResult,
                               Model theModel,@ModelAttribute("wordRouter") WordRouter wordRouter ) {
        // System.out.println("in InWordInput "+ wordRouter);
+        wordRouter.setWordLength(wordLength);
         System.out.println("in InWordInput wordLength "+ wordLength);
         Word theWord = wordService.findById(theId);
         theModel.addAttribute("theInWord", theInWord);
@@ -124,7 +125,7 @@ public class WordController {
                 System.out.println("post " + theId);
                 System.out.println("post this  " + this.theId);
 
-               wordRouter.setWordLength(wordLength);
+
 
                 System.out.println("before word-right wordRouter"+ wordRouter);
                 return "/word/word-right.html";
@@ -152,6 +153,8 @@ public class WordController {
                     }
                     theWord = wordService.findById(theId);
                     theModel.addAttribute("word", theWord);
+                    System.out.println();
+                    System.out.println("before out-of-tries"+ wordRouter);
                     return "/word/out-of-tries.html";
                 }
             }

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
 <div class="container">
   <h3>Spell</h3>
@@ -23,7 +24,7 @@
         <p th:case="'NINE'"th:text="'now try ' +  ${word.nineLength}"/>
         <p th:case="'TEN'"th:text="'now try ' +  ${word.tenLength}"/>
         <p th:case="'ELEVEN'"th:text="'now try ' +  ${word.elevenLength}"/>
-        <p th:case="'TWELVE'"th:text="'now try ' +  ${word.tweleveLength}"/>
+        <p th:case="'TWELVE'"th:text="'now try ' +  ${word.twelveLength}"/>
         <p th:case="'THIRTEEN'"th:text="'now try ' +  ${word.thirteenLength}"/>
         <p th:case="'FOURTEEN'"th:text="'now try ' +  ${word.fourteenLength}"/>
         <p th:case="*">Email web site admin their is a enum problem</p>

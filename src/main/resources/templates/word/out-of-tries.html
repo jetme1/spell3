@@ -9,13 +9,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
 <div class="container">
   <h3>Spell</h3>
 
 
-    <p th:text="'Try this word ' +  ${word.allWords}"/>
+
+
+    <p th:text="'Try this word'"/>
+
+    <div th:switch="${wordRouter.wordLength.name}">
+        <p th:case="'FIVE'" th:text="'now try ' +  ${word.fiveLength}"/>
+        <p th:case="'SIX'"th:text="'now try ' +  ${word.sixLength}"/>
+        <p th:case="'SEVEN'"th:text="'now try ' +  ${word.sevenLength}"/>
+        <p th:case="'EIGHT'"th:text="'now try ' +  ${word.eightLength}"/>
+        <p th:case="'NINE'"th:text="'now try ' +  ${word.nineLength}"/>
+        <p th:case="'TEN'"th:text="'now try ' +  ${word.tenLength}"/>
+        <p th:case="'ELEVEN'"th:text="'now try ' +  ${word.elevenLength}"/>
+        <p th:case="'TWELVE'"th:text="'now try ' +  ${word.twelveLength}"/>
+        <p th:case="'THIRTEEN'"th:text="'now try ' +  ${word.thirteenLength}"/>
+        <p th:case="'FOURTEEN'"th:text="'now try ' +  ${word.fourteenLength}"/>
+        <p th:case="*">Email web site admin their is a enum problem</p>
+        <!--  <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/> -->
+    </div>
+
 
     <a th:href="@{/word/wordCheck/typeWordForm}"
        class = "btn btn-primary btn-sm mb-3">
