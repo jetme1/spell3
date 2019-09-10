@@ -35,7 +35,7 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid text-center" id="con2" >
+    <div class="container-fluid text-center" id="con2">
         <!--<h3>Spell</h3>-->
 
         <div>
@@ -43,19 +43,21 @@
                 <!--    <from action="#" th:action="@{/all}" th:object="${wordRouter}" method="post">-->
 
                 <div>
-                    <h5 id="label">Pick the word length</h5>
+                    <p>Pick the word length</p>
 
                     <!--                    <label for="wordLength">Pick the word Length</label>-->
                     <select id="wordLength" th:field="*{wordLength}">
                         <option th:each="wordLength : ${lengths}"
                                 th:value="${wordLength}"
                                 th:text="${wordLength}"
+
                         >wordsLength
                         </option>
                     </select>
 
-
-                    <button type="submit" class="btn btn-outline-dark brn-sm">start</button>
+                    <div>
+                        <button type="submit" class="btn btn-outline-dark brn-sm">START</button>
+                    </div>
 
                 </div>
 

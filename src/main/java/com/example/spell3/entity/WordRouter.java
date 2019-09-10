@@ -2,7 +2,7 @@ package com.example.spell3.entity;
 
 public class WordRouter {
 
-    private WordLength wordLength = WordLength.FIVE;
+    private WordLength wordLength = WordLength.SEVEN;
 
 
     public WordRouter(WordLength wordLength){

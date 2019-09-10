@@ -1,0 +1,42 @@
+#main {
+    background-image: url("../img/phoneletter.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    /*width: 100;
+
+     */
+    height: 100vh;
+}
+
+@media (min-width: 768px) {
+    #main {
+
+        background-image: url("../img/mainletter.jpg");
+    }
+}
+
+#con2 {
+    padding: 10%;
+}
+
+p {font-size:1.5rem;
+    margin: 0%;
+}
+
+
+#wordLength {
+    padding: 0%;
+    margin: 1%;
+    background-color: rgb(221, 221, 221)
+}
+
+
+
+#greeting {
+}
+
+.btn-outline-dark {
+    padding: 2px;
+    margin: 1% 0%;
+}

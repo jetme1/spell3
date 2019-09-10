@@ -134,7 +134,7 @@ public class WordController {
                 if (tryCount < 1) {
                     System.out.println("not the Same" + wordLength);
                     tryCount++;
-                    return "word/wordCheck/typeWordFormError.html";
+                    return "word/wordCheck/typeWordFormTryAgain.html";
                 } else {
                     System.out.println("in out of tries");
                     System.out.println(" Try count: " + tryCount + " id " + theId + " end of Words " + endOfWords);

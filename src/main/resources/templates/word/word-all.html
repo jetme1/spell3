@@ -17,8 +17,9 @@
 <body>
 <section class="text-monospace" id="main" style="opacity: 1;">
     <nav class="navbar navbar-light navbar-expand-md">
-        <div class="container-fluid"><a class="navbar-brand" href="#">Spell</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-            <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid"><a class="navbar-brand" href="#">Spell</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                  id="navcol-1">
                 <ul class="nav navbar-nav">
@@ -29,31 +30,30 @@
             </div>
         </div>
     </nav>
-    <div class="container text-center" style="padding: 16%;">
+    <div class="container-fluid text-center" id="con2">
 
 
+        <div th:switch="${wordRouter.wordLength.name}">
+            <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/>
+            <p th:case="'SIX'" th:text="'Spell the word ' +  ${word.sixLength}"/>
+            <p th:case="'SEVEN'" th:text="'Spell the word ' +  ${word.sevenLength}"/>
+            <p th:case="'EIGHT'" th:text="'Spell the word ' +  ${word.eightLength}"/>
+            <p th:case="'NINE'" th:text="'Spell the word ' +  ${word.nineLength}"/>
+            <p th:case="'TEN'" th:text="'Spell the word ' +  ${word.tenLength}"/>
+            <p th:case="'ELEVEN'" th:text="'Spell the word ' +  ${word.elevenLength}"/>
+            <p th:case="'TWELVE'" th:text="'Spell the word ' +  ${word.twelveLength}"/>
+            <p th:case="'THIRTEEN'" th:text="'Spell the word ' +  ${word.thirteenLength}"/>
+            <p th:case="'FOURTEEN'" th:text="'Spell the word ' +  ${word.fourteenLength}"/>
+            <p th:case="*">Email web site admin their is a enum problem</p>
+            <!--  <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/> -->
+        </div>
 
-    <div th:switch="${wordRouter.wordLength.name}">
-        <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/>
-        <p th:case="'SIX'"th:text="'Spell the word ' +  ${word.sixLength}"/>
-        <p th:case="'SEVEN'"th:text="'Spell the word ' +  ${word.sevenLength}"/>
-        <p th:case="'EIGHT'"th:text="'Spell the word ' +  ${word.eightLength}"/>
-        <p th:case="'NINE'"th:text="'Spell the word ' +  ${word.nineLength}"/>
-        <p th:case="'TEN'"th:text="'Spell the word ' +  ${word.tenLength}"/>
-        <p th:case="'ELEVEN'"th:text="'Spell the word ' +  ${word.elevenLength}"/>
-        <p th:case="'TWELVE'"th:text="'Spell the word ' +  ${word.twelveLength}"/>
-        <p th:case="'THIRTEEN'"th:text="'Spell the word ' +  ${word.thirteenLength}"/>
-        <p th:case="'FOURTEEN'"th:text="'Spell the word ' +  ${word.fourteenLength}"/>
-        <p th:case="*">Email web site admin their is a enum problem</p>
-        <!--  <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/> -->
+        <a th:href="@{/word/wordCheck/typeWordForm}"
+           class="btn btn-outline-dark brn-sm">
+            READY
+        </a>
+
     </div>
-
-    <a th:href="@{/word/wordCheck/typeWordForm}"
-       class="btn btn-primary btn-sm mb-3">
-        READY
-    </a>
-
-</div>
 
     </div>
 </section>
