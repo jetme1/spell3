@@ -29,7 +29,7 @@ public class WordController {
     private WordLength wordLength;
 
     private long numberRight = 0L;
-    private Long theId = 0L;
+    private Long theId = 1L;
     private Long endOfWords = 3L;
     private int tryCount = 0;
 
@@ -49,6 +49,7 @@ public class WordController {
         //  theModel.addAttribute("WordLength", new WordLength )
         return "/root/root.html";
 
+
     }
 
 
@@ -57,12 +58,37 @@ public class WordController {
 
         System.out.println("in getWord enum controller /all " + wordRouter);
         this.wordLength = wordRouter.getWordLength();
+        switch (wordRouter.getWordLength()) {
+            case FIVE:
+                this.endOfWords = 16L;
+            case SIX:
+                this.endOfWords = 35L;
+            case SEVEN:
+                this.endOfWords = 38L;
+            case EIGHT:
+                this.endOfWords = 30L;
+            case NINE:
+                this.endOfWords = 33L;
+            case TEN:
+                this.endOfWords = 36L;
+            case ELEVEN:
+                this.endOfWords = 29L;
+            case TWELVE:
+                this.endOfWords = 37L;
+            case THIRTEEN:
+                this.endOfWords = 25L;
+            case FOURTEEN:
+                this.endOfWords = 12L;
+            default:
+                this.endOfWords = 12L;
+
+
+        }
+
         System.out.println("before id " + theId);
         // theModel.addAttribute("wordRouter", wordRouter);
 
-        if (theId == 0L) {
-            theId = 1L;
-        }
+
         System.out.println("afterId " + theId);
         System.out.println("after id this " + this.theId);
 
@@ -138,7 +164,7 @@ public class WordController {
                     if (theId == endOfWords) {
                         WordTotals theWordTotals = new WordTotals(numberRight, endOfWords);
                         theModel.addAttribute("WordTotals", theWordTotals);
-                        theId = 0L;
+                        theId = 1L;
                         numberRight = 0L;
                         System.out.println("in last try fail. Try count: " + tryCount + "id" + theId + "end of Words " + endOfWords);
                         return "/word/word-right-end.html";
