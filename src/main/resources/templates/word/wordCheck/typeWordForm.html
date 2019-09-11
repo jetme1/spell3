@@ -42,13 +42,13 @@
             <table align="center">
                 <tr>
                     <td>Type word here:</td>
-                    <td ><input type="text" id="wordLength" th:field="*{inputWord}"/></td>
+                    <td><input type="text" id="wordLength" th:field="*{inputWord}"/></td>
                     <td th:if="${#fields.hasErrors('inputWord')}" th:error="*{inputWord}">Type Something</td>
 
                 </tr>
-               <!-- <tr>
-                    <td><input type="submit" class="btn btn-outline-dark brn-sm" value="Submit"/></td>
-                </tr>-->
+                <!-- <tr>
+                     <td><input type="submit" class="btn btn-outline-dark brn-sm" value="Submit"/></td>
+                 </tr>-->
             </table>
             <input type="submit" class="btn btn-outline-dark brn-sm" value="ENTER"/>
 

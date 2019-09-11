@@ -44,7 +44,7 @@ public class WordController {
     }
 
     @GetMapping("/")
-    public String home(Model theModel,@ModelAttribute("wordRouter") WordRouter wordRouter) {
+    public String home(Model theModel, @ModelAttribute("wordRouter") WordRouter wordRouter) {
         System.out.println(" controller " + wordRouter);
         //  theModel.addAttribute("WordLength", new WordLength )
         return "/root/root.html";
@@ -53,12 +53,12 @@ public class WordController {
 
 
     @PostMapping("/all")
-    public String getWord(Model theModel,@ModelAttribute("wordRouter") WordRouter wordRouter) {
+    public String getWord(Model theModel, @ModelAttribute("wordRouter") WordRouter wordRouter) {
 
         System.out.println("in getWord enum controller /all " + wordRouter);
-       this.wordLength =wordRouter.getWordLength();
+        this.wordLength = wordRouter.getWordLength();
         System.out.println("before id " + theId);
-       // theModel.addAttribute("wordRouter", wordRouter);
+        // theModel.addAttribute("wordRouter", wordRouter);
 
         if (theId == 0L) {
             theId = 1L;
@@ -73,8 +73,6 @@ public class WordController {
         return "/word/word-all.html";
 
 
-
-
     }
 
     @GetMapping("/word/wordCheck/typeWordForm")
@@ -87,10 +85,10 @@ public class WordController {
 
     @PostMapping("/word/wordCheck/typeWordForm")
     public String InWordInput(@Valid @ModelAttribute("theInWord") InWord theInWord, BindingResult bindingResult,
-                              Model theModel,@ModelAttribute("wordRouter") WordRouter wordRouter ) {
-       // System.out.println("in InWordInput "+ wordRouter);
+                              Model theModel, @ModelAttribute("wordRouter") WordRouter wordRouter) {
+        // System.out.println("in InWordInput "+ wordRouter);
         wordRouter.setWordLength(wordLength);
-        System.out.println("in InWordInput wordLength "+ wordLength);
+        System.out.println("in InWordInput wordLength " + wordLength);
         Word theWord = wordService.findById(theId);
         theModel.addAttribute("theInWord", theInWord);
         theModel.addAttribute("word", theWord);
@@ -103,8 +101,8 @@ public class WordController {
 
         } else {
 
-            if (isTheSame.compare(theWord, theInWord, wordLength  )) {
-                System.out.println("same "+ wordLength);
+            if (isTheSame.compare(theWord, theInWord, wordLength)) {
+                System.out.println("same " + wordLength);
                 numberRight++;
 
                 if (theId == endOfWords) {
@@ -126,8 +124,7 @@ public class WordController {
                 System.out.println("post this  " + this.theId);
 
 
-
-                System.out.println("before word-right wordRouter"+ wordRouter);
+                System.out.println("before word-right wordRouter" + wordRouter);
                 return "/word/word-right.html";
 
             } else {
@@ -154,7 +151,7 @@ public class WordController {
                     theWord = wordService.findById(theId);
                     theModel.addAttribute("word", theWord);
                     System.out.println();
-                    System.out.println("before out-of-tries"+ wordRouter);
+                    System.out.println("before out-of-tries" + wordRouter);
                     return "/word/out-of-tries.html";
                 }
             }

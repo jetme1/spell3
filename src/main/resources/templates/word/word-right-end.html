@@ -9,20 +9,43 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-   <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
-<div class="container">
 
 
-    <p th:text=" ${WordTotals.numberRight}+ ' out of ' + ${WordTotals.totalWords} + ' right'" />
+<body>
+<section class="text-monospace" id="main" style="opacity: 1;">
+    <nav class="navbar navbar-light navbar-expand-md">
+        <div class="container-fluid"><a class="navbar-brand" href="#">Spell</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                 id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid text-center" id="con2">
 
-    <a th:href="@{/}"
-       class="btn btn-primary btn-sm mb-3">
-        Go Home
-    </a>
 
-</div>
+        <p th:text=" ${WordTotals.numberRight}+ ' out of ' + ${WordTotals.totalWords} + ' right'"/>
+
+        <a th:href="@{/}"
+           class="btn btn-outline-dark brn-sm">
+            Go Home
+        </a>
 
 
+    </div>
+</section>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+
+</body>
 </html>
