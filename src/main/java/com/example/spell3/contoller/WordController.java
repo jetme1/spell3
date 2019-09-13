@@ -55,32 +55,43 @@ public class WordController {
 
     @PostMapping("/all")
     public String getWord(Model theModel, @ModelAttribute("wordRouter") WordRouter wordRouter) {
-
+//todo do I need a break?
         System.out.println("in getWord enum controller /all " + wordRouter);
         this.wordLength = wordRouter.getWordLength();
         switch (wordRouter.getWordLength()) {
             case FIVE:
                 this.endOfWords = 16L;
+                break;
             case SIX:
                 this.endOfWords = 35L;
+                break;
             case SEVEN:
                 this.endOfWords = 38L;
+                break;
             case EIGHT:
                 this.endOfWords = 30L;
+                break;
             case NINE:
                 this.endOfWords = 33L;
+                break;
             case TEN:
                 this.endOfWords = 36L;
+                break;
             case ELEVEN:
                 this.endOfWords = 29L;
+                break;
             case TWELVE:
                 this.endOfWords = 37L;
+                break;
             case THIRTEEN:
                 this.endOfWords = 25L;
+                break;
             case FOURTEEN:
                 this.endOfWords = 12L;
+                break;
             default:
-                this.endOfWords = 12L;
+                this.endOfWords = 10L;
+                break;
 
 
         }
@@ -136,7 +147,7 @@ public class WordController {
                     WordTotals theWordTotals = new WordTotals(numberRight, endOfWords);
                     // System.out.println("endOfWords"+ theWordTotals.g);
                     theModel.addAttribute("WordTotals", theWordTotals);
-                    theId = 0L;
+                    theId = 1L;
                     numberRight = 0L;
                     // theModel.addAttribute("numberRight", numberRight );
                     return "/word/word-right-end.html";
