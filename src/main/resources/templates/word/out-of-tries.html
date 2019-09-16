@@ -32,26 +32,27 @@
     </nav>
     <div class="container-fluid text-center" id="con2">
 
-    <div th:switch="${wordRouter.wordLength.name}">
-        <p th:case="'FIVE'" th:text="'Sory, try ' +  ${word.fiveLength}"/>
-        <p th:case="'SIX'" th:text="'Sory, try ' +  ${word.sixLength}"/>
-        <p th:case="'SEVEN'" th:text="'Sory, try ' +  ${word.sevenLength}"/>
-        <p th:case="'EIGHT'" th:text="'Sory, try ' +  ${word.eightLength}"/>
-        <p th:case="'NINE'" th:text="'Sory, try ' +  ${word.nineLength}"/>
-        <p th:case="'TEN'" th:text="'Sory, try ' +  ${word.tenLength}"/>
-        <p th:case="'ELEVEN'" th:text="'Sory, try ' +  ${word.elevenLength}"/>
-        <p th:case="'TWELVE'" th:text="'Sory, try ' +  ${word.twelveLength}"/>
-        <p th:case="'THIRTEEN'" th:text="'Sory, try ' +  ${word.thirteenLength}"/>
-        <p th:case="'FOURTEEN'" th:text="'Sory, try ' +  ${word.fourteenLength}"/>
-        <p th:case="*">Email web site admin their is a enum problem</p>
-        <!--  <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/> -->
-    </div>
+        <div th:switch="${wordRouter.wordLength.name}">
+            <p th:case="'FIVE'" th:text="'Sory, try ' +  ${word.fiveLength}"/>
+            <p th:case="'SIX'" th:text="'Sory, try ' +  ${word.sixLength}"/>
+            <p th:case="'SEVEN'" th:text="'Sory, try ' +  ${word.sevenLength}"/>
+            <p th:case="'EIGHT'" th:text="'Sory, try ' +  ${word.eightLength}"/>
+            <p th:case="'NINE'" th:text="'Sory, try ' +  ${word.nineLength}"/>
+            <p th:case="'TEN'" th:text="'Sory, try ' +  ${word.tenLength}"/>
+            <p th:case="'ELEVEN'" th:text="'Sory, try ' +  ${word.elevenLength}"/>
+            <p th:case="'TWELVE'" th:text="'Sory, try ' +  ${word.twelveLength}"/>
+            <p th:case="'THIRTEEN'" th:text="'Sory, try ' +  ${word.thirteenLength}"/>
+            <p th:case="'FOURTEEN'" th:text="'Sory, try ' +  ${word.fourteenLength}"/>
+            <p th:case="*">Email web site admin their is a enum problem</p>
+            <!--  <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/> -->
+        </div>
 
 
-    <a th:href="@{/word/wordCheck/typeWordForm}"
-       class="btn btn-outline-dark brn-sm">
-        READY
-    </a>
+        <a th:href="@{/word/wordCheck/typeWordForm}"
+           id="enter"
+           class="btn btn-outline-dark brn-sm">
+            READY
+        </a>
 
     </div>
 </section>
