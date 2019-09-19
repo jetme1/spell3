@@ -5,10 +5,12 @@ import com.example.spell3.entity.*;
 import com.example.spell3.exceptions.NotFoundException;
 import com.example.spell3.service.CompareWordService;
 import com.example.spell3.service.CompareWordServiceImpl;
+import com.example.spell3.service.MissedWordService;
 import com.example.spell3.service.WordService;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 //import org.springframework.boot.context.properties.bind.BindResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -23,30 +25,43 @@ import java.util.List;
 @Controller
 
 public class WordController {
-
+    private MissedWordService missedWordService;
     private WordService wordService;
     private CompareWordService isTheSame;
     private WordLength wordLength;
-
+    //todo fix long
     private long numberRight = 0L;
     private Long theId = 1L;
     private Long endOfWords = 3L;
     private int tryCount = 0;
 
-    public WordController(WordService wordService, CompareWordService isTheSame) {
+    public WordController(WordService wordService, CompareWordService isTheSame, MissedWordService missedWordService) {
         this.wordService = wordService;
         this.isTheSame = isTheSame;
+        this.missedWordService = missedWordService;
     }
 
-    @ModelAttribute("lengths")//
+
+    @ModelAttribute("lengths")
     public List<WordLength> lengthOfWords() {
         return Arrays.asList(WordLength.ALL);
+    }
+
+    @ModelAttribute("missedWords")
+    public List<MissedWord> populateMissedWords() {
+        System.out.println("in populateMissedWords " + missedWordService.findAll());
+        return missedWordService.findAll();
     }
 
     @GetMapping("/")
     public String home(Model theModel, @ModelAttribute("wordRouter") WordRouter wordRouter) {
         System.out.println(" controller " + wordRouter);
         //  theModel.addAttribute("WordLength", new WordLength )
+        System.out.println("before clear" + populateMissedWords());
+        missedWordService.clearMissedWords();
+        theId = 1L;
+        numberRight = 0L;
+        tryCount = 0;
         return "/root/root.html";
 
 
@@ -55,12 +70,13 @@ public class WordController {
 
     @PostMapping("/all")
     public String getWord(Model theModel, @ModelAttribute("wordRouter") WordRouter wordRouter) {
-//todo do I need a break?
+
         System.out.println("in getWord enum controller /all " + wordRouter);
         this.wordLength = wordRouter.getWordLength();
         switch (wordRouter.getWordLength()) {
             case FIVE:
-                this.endOfWords = 16L;
+                //todo change for testing back to 16L
+                this.endOfWords = 3L;
                 break;
             case SIX:
                 this.endOfWords = 35L;
@@ -122,15 +138,19 @@ public class WordController {
 
     @PostMapping("/word/wordCheck/typeWordForm")
     public String InWordInput(@Valid @ModelAttribute("theInWord") InWord theInWord, BindingResult bindingResult,
-                              Model theModel, @ModelAttribute("wordRouter") WordRouter wordRouter) {
+                              Model theModel, @ModelAttribute("wordRouter") WordRouter wordRouter, MissedWord missedWord) {
         // System.out.println("in InWordInput "+ wordRouter);
+
         wordRouter.setWordLength(wordLength);
         System.out.println("in InWordInput wordLength " + wordLength);
         Word theWord = wordService.findById(theId);
+        System.out.println("the word at start " + theWord);
         theModel.addAttribute("theInWord", theInWord);
         theModel.addAttribute("word", theWord);
         //CompareWordService isTheSame = new CompareWordServiceImpl();
         System.out.println(isTheSame);
+
+
         if (bindingResult.hasErrors()) {
             System.out.println("in error page");
             System.out.println(bindingResult);
@@ -149,6 +169,7 @@ public class WordController {
                     theModel.addAttribute("WordTotals", theWordTotals);
                     theId = 1L;
                     numberRight = 0L;
+                    //todo 2 word-right-end
                     // theModel.addAttribute("numberRight", numberRight );
                     return "/word/word-right-end.html";
                 }
@@ -157,6 +178,7 @@ public class WordController {
 
                 theWord = wordService.findById(theId);
                 theModel.addAttribute("word", theWord);
+
                 System.out.println("post " + theId);
                 System.out.println("post this  " + this.theId);
 
@@ -166,18 +188,26 @@ public class WordController {
 
             } else {
                 if (tryCount < 1) {
+                    missedWordService.add(missedWord, theWord, wordLength);
                     System.out.println("not the Same" + wordLength);
                     tryCount++;
                     return "word/wordCheck/typeWordFormTryAgain.html";
                 } else {
+                    System.out.println("the word after else " + theWord);
+
+
+                    // populateMissedWords();
                     System.out.println("in out of tries");
                     System.out.println(" Try count: " + tryCount + " id " + theId + " end of Words " + endOfWords);
                     if (theId == endOfWords) {
                         WordTotals theWordTotals = new WordTotals(numberRight, endOfWords);
                         theModel.addAttribute("WordTotals", theWordTotals);
-                        theId = 1L;
-                        numberRight = 0L;
+
+
+
                         System.out.println("in last try fail. Try count: " + tryCount + "id" + theId + "end of Words " + endOfWords);
+
+
                         return "/word/word-right-end.html";
 
                     }
