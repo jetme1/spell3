@@ -53,6 +53,11 @@ public class WordController {
         return missedWordService.findAll();
     }
 
+    @GetMapping("/word/theList.html")
+    public String getList() {
+        return "/word/theList.html";
+    }
+
     @GetMapping("/")
     public String home(Model theModel, @ModelAttribute("wordRouter") WordRouter wordRouter) {
         System.out.println(" controller " + wordRouter);
@@ -76,7 +81,7 @@ public class WordController {
         switch (wordRouter.getWordLength()) {
             case FIVE:
                 //todo change for testing back to 16L
-                this.endOfWords = 3L;
+                this.endOfWords = 1L;
                 break;
             case SIX:
                 this.endOfWords = 35L;
@@ -202,7 +207,6 @@ public class WordController {
                     if (theId == endOfWords) {
                         WordTotals theWordTotals = new WordTotals(numberRight, endOfWords);
                         theModel.addAttribute("WordTotals", theWordTotals);
-
 
 
                         System.out.println("in last try fail. Try count: " + tryCount + "id" + theId + "end of Words " + endOfWords);

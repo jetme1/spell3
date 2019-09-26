@@ -40,23 +40,29 @@
            class="btn btn-outline-dark brn-sm">
             Go Home
         </a>
+        <h4 id="missedTitle">Missed Words</h4>
 
+        <ul th:each="mw:${missedWords}">
+            <li id="missedList" th:text="${mw.missedWord}"></li>
+        </ul>
     </div>
 
-    <tbody>
-    <tr th:each="mw:${missedWords}">
-        <td th:text="${mw.missedWord}"></td>
 
-    </tr>
+    <!--  <tbody>
+      <tr th:each="mw:${missedWords}">
+          <td th:text="${mw.missedWord}"></td>
+
+      </tr>
 
 
-    </tbody>
-
+      </tbody>
+  -->
 
 </section>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="/js/index.js"></script>
-
+<section  class="end">
+</section>
 </body>
 </html>
