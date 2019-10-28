@@ -1,0 +1,31 @@
+2019-08-23 08:35:12.788  INFO 10016 --- [restartedMain] com.example.spell3.Spell3Application     : Starting Spell3Application on w with PID 10016 (D:\c\spell3\target\classes started by tom in D:\c\spell3)
+2019-08-23 08:35:12.793  INFO 10016 --- [restartedMain] com.example.spell3.Spell3Application     : No active profile set, falling back to default profiles: default
+2019-08-23 08:35:12.943  INFO 10016 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-08-23 08:35:12.953  INFO 10016 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-08-23 08:35:14.502  INFO 10016 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-23 08:35:14.612  INFO 10016 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100ms. Found 1 repository interfaces.
+2019-08-23 08:35:15.173  INFO 10016 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d418adc8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-23 08:35:15.845  INFO 10016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-08-23 08:35:15.892  INFO 10016 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-23 08:35:15.892  INFO 10016 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-08-23 08:35:15.892  INFO 10016 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\java8\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\SourceGear\Common\DiffMerge\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Java\java8\bin;%M2_HOME%\bin;C:\Program Files\Apache Software Foundation\apache-maven-3.6.0\bin;C:\Program Files\nodejs\;%M2_HOME\bin;D:\c\Nmap;C:\Users\tom\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\tom\AppData\Roaming\npm;C:\Users\tom\AppData\Local\Microsoft\WindowsApps;;.]
+2019-08-23 08:35:16.080  INFO 10016 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-23 08:35:16.080  INFO 10016 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3127 ms
+2019-08-23 08:35:16.376  INFO 10016 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-08-23 08:35:17.064  INFO 10016 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-08-23 08:35:17.158  INFO 10016 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-23 08:35:17.298  INFO 10016 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-08-23 08:35:17.298  INFO 10016 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-08-23 08:35:17.579  INFO 10016 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-08-23 08:35:17.814  INFO 10016 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-08-23 08:35:18.861  INFO 10016 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-23 08:35:19.579  INFO 10016 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-23 08:35:19.642  WARN 10016 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-08-23 08:35:19.986  INFO 10016 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-08-23 08:35:20.064  INFO 10016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-08-23 08:35:20.064  INFO 10016 --- [restartedMain] com.example.spell3.Spell3Application     : Started Spell3Application in 8.366 seconds (JVM running for 10.509)
+2019-08-23 08:42:39.826  INFO 10016 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-23 08:42:39.826  INFO 10016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-23 08:42:39.826  INFO 10016 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms

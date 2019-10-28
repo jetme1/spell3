@@ -2,36 +2,67 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-   <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1shrink-to-fit=no">
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 </head>
-<div class="container">
-  <h3>Spell</h3>
-    <p th:text="'Spell the word ' +  ${word.allWords}"/>
-
-    <a th:href="@{/word/wordCheck/typeWordForm}"
-       class = "btn btn-primary btn-sm mb-3">
-        READY
-    </a>
-
-</div>
 
 
+<body>
+<section class="text-monospace" id="main" style="opacity: 1;">
+    <nav class="navbar navbar-light navbar-expand-md">
+        <div class="container-fluid"><a class="navbar-brand" href="#">Spell</a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                 id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid text-center" id="con2">
 
 
+        <div th:switch="${wordRouter.wordLength.name}">
+            <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/>
+            <p th:case="'SIX'" th:text="'Spell the word ' +  ${word.sixLength}"/>
+            <p th:case="'SEVEN'" th:text="'Spell the word ' +  ${word.sevenLength}"/>
+            <p th:case="'EIGHT'" th:text="'Spell the word ' +  ${word.eightLength}"/>
+            <p th:case="'NINE'" th:text="'Spell the word ' +  ${word.nineLength}"/>
+            <p th:case="'TEN'" th:text="'Spell the word ' +  ${word.tenLength}"/>
+            <p th:case="'ELEVEN'" th:text="'Spell the word ' +  ${word.elevenLength}"/>
+            <p th:case="'TWELVE'" th:text="'Spell the word ' +  ${word.twelveLength}"/>
+            <p th:case="'THIRTEEN'" th:text="'Spell the word ' +  ${word.thirteenLength}"/>
+            <p th:case="'FOURTEEN'" th:text="'Spell the word ' +  ${word.fourteenLength}"/>
+            <p th:case="*">Email web site admin there is a enum problem</p>
+            <!--  <p th:case="'FIVE'" th:text="'Spell the word ' +  ${word.fiveLength}"/> -->
+        </div>
 
+        <a th:href="@{/word/wordCheck/typeWordForm}"
+           class="btn btn-outline-dark brn-sm"
+           id="enter"
+        >
+            READY
 
+        </a>
 
+    </div>
 
+    </div>
+</section>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
-
-
-
-
+<script src="/js/index.js"></script>
+</body>
 </html>

@@ -1,0 +1,103 @@
+#main {
+    background-image: url("../img/phoneletter.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 100vh;
+}
+
+
+@media (min-width: 768px) {
+    #main {
+
+        background-image: url("../img/mainletter.jpg");
+    }
+}
+
+.end {
+    background-image: url("../img/phoneletter.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 100vh;
+}
+
+
+@media (min-width: 768px) {
+    .end {
+
+        background-image: url("../img/mainletter.jpg");
+    }
+}
+
+#con2 {
+    padding: 7%;
+}
+
+p {
+    font-size: 1.5rem;
+    margin: 0%;
+}
+
+
+#wordLength {
+    padding: 0%;
+    margin: 1%;
+    background-color: rgba(238, 219, 231, 0.08)
+}
+
+
+#greeting {
+}
+
+.btn-outline-dark {
+    padding: 2px;
+    margin: 1% 0%;
+}
+
+#missedTitle {
+    margin-top: 2%;
+}
+
+#missedList {
+    font-size: 1.5rem;
+    margin-right: 3%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    background-color: rgb(188, 188, 188);
+}
+
+section {
+    ackground-color: rgb(188, 188, 188);
+}
+
+li {
+    word-wrap: break-word;
+}
+
+.over {
+    margin: 0%;
+    width: 14rem;
+    height: 17rem;
+    overflow-y: auto;
+    padding: 0rem;
+}
+
+#letterTitle {
+    margin: 8% 0% 0% 0%;
+    text-align: center;
+
+}
+
+.letterSub{
+    margin: 8% 0% 2% 0%;
+
+
+}
