@@ -7,8 +7,12 @@ import com.example.spell3.service.CompareWordService;
 import com.example.spell3.service.CompareWordServiceImpl;
 import com.example.spell3.service.MissedWordService;
 import com.example.spell3.service.WordService;
-import com.sun.org.apache.xpath.internal.SourceTree;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+
+//took out
+//import com.sun.org.apache.xpath.internal.SourceTree;
+//import com.sun.org.apache.xpath.internal.operations.Mod;
+//took out
+
 //import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
