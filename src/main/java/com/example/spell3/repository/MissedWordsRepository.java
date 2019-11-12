@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+//todo add interface
 @Repository
 public class MissedWordsRepository {
     //todo add interface

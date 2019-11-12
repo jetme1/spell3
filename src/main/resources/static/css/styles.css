@@ -96,8 +96,28 @@ li {
 
 }
 
-.letterSub{
+.letterSub {
     margin: 8% 0% 2% 0%;
 
 
+}
+
+.nav-item {
+    padding: 0rem 0rem 0rem 1.6rem;
+}
+
+#closer {
+
+    word-spacing: -.12rem;
+}
+.page-footer{text-align:center;}
+
+.bottom-container {
+
+}
+.copyright{
+
+    font-size: .75rem;
+    padding: 33rem 0 0 0;
+    margin: 0;
 }

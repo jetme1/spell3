@@ -22,20 +22,7 @@
 </div>-->
 <body>
 <section class="text-monospace" id="main" style="opacity: 1;">
-    <nav class="navbar navbar-light navbar-expand-md">
-        <div class="container-fluid"><a class="navbar-brand" href="#">Spell</a>
-            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                 id="navcol-1">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div th:replace="fragments/header ::header"></div>
     <div class="container-fluid text-center" id="con2">
         <p>Try again</p>
         <form action="#" th:action="@{/word/wordCheck/typeWordForm}" th:object="${theInWord}" method="post">
@@ -43,7 +30,7 @@
                 <tr>
                     <td>Type word here:</td>
                     <td><input type="text" id="wordLength" th:field="*{inputWord}" autofocus autocomplete="off" /></td>
-                    <td th:if="${#fields.hasErrors('inputWord')}" th:error="*{inputWord}">Type Something</td>
+                    <td th:if="${#fields.hasErrors('inputWord')}" th:error="*{inputWord}">Type in letters (no numbers, etc.)</td>
 
                 </tr>
                 <!-- <tr>
@@ -55,6 +42,7 @@
         </form>
 
     </div>
+    <div th:replace="fragments/footer ::footer"></div>
 </section>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
