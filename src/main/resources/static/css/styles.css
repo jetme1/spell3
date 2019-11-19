@@ -124,11 +124,17 @@ li {
 
 }
 */
+
+.content-wrap{
+    margin: -4rem;
+    font-size: 1rem;
+
+}
 .bottom-container {
     position: absolute;
     bottom: 0;
     width: 86%;
-    height: 2.5rem;
+    height: 1.5rem;
 }
 .copyright {
 
